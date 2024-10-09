@@ -1,5 +1,6 @@
 
 import Core from './components/Core'
+import Header from './components/Header'
 
 
 
@@ -43,6 +44,9 @@ const ReducerExampleWithParams = () => {
   return (
     <>
     {/**envuelve el componente Core, para que pueda ser utilizado el reducer correctamente */}
+        
+        <Header></Header>
+        
         <Core></Core>
     
     </>

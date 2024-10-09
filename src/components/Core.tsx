@@ -8,7 +8,7 @@ const Core = () => {
     //const {todos,dispatch}=useContext(TodosContext2)
     //para simpplificar mas se utiliza un customHook
     //const {todos,dispatch} = useTodos()
-    const {todos,add,destroy}=useTodosStore()
+    const {todos,add,destroy,update}=useTodosStore()
     
   return (
     <>
@@ -18,7 +18,10 @@ const Core = () => {
         <ul>
             {todos.map((todo)=>
                 (
-                <li key={todo.id}>{todo.name} <button onClick={()=>destroy(todo.id)}>Delete Todo</button></li>
+                <li key={todo.id}>{todo.name} 
+                <button onClick={()=>destroy(todo.id)}>Delete Todo</button>
+                <button onClick={()=>update(todo.id,{id:588,name:'EXERCISE'})}>Update</button>
+                </li>
                 )
                 )}
         </ul>
