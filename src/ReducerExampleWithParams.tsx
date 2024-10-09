@@ -1,9 +1,7 @@
-import React, { useReducer } from 'react'
-import todosReducer from './reducers/todosReducer'
-import TodosProvider2 from './providers/TodosProvider2'
+
 import Core from './components/Core'
 
-type Props = {}
+
 
 /*
 //CODIGO ANTES DE LA REFACTORIZACIÓN DE ORGANIZACION DE CÓDIGO REDUCERS
@@ -38,16 +36,15 @@ const reducer = (todos:Todo[],action:Action)=>{
 }*/
 
 
-const ReducerExampleWithParams = (props: Props) => {
+const ReducerExampleWithParams = () => {
 
     
 
   return (
     <>
     {/**envuelve el componente Core, para que pueda ser utilizado el reducer correctamente */}
-    <TodosProvider2>
         <Core></Core>
-    </TodosProvider2>
+    
     </>
   )
 }

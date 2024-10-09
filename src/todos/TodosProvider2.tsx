@@ -1,3 +1,7 @@
+import { ReactNode, useReducer } from "react"
+
+import TodosContext2 from "./TodosContext2"
+
 export type Todo = {
     id:number,
     name:string,
@@ -17,7 +21,7 @@ type DeleteAction = {
 export type TodoAction = AddAction | DeleteAction;
 
 
-export default (todos:Todo[],action:TodoAction)=>{
+const todosReducer = (todos:Todo[],action:TodoAction)=>{
     
     switch(action.type){
         case "add":
@@ -26,4 +30,17 @@ export default (todos:Todo[],action:TodoAction)=>{
             return todos.filter(t=> t.id !== action.todoId)
     }   
     return todos;
+}
+
+
+type Props = {
+    children:ReactNode
+}
+export default function TodosProvider({children}:Props){
+    const[todos,dispatch]=useReducer(todosReducer,[])
+    return (
+        <TodosContext2.Provider value={{todos,dispatch}}>
+            {children}
+        </TodosContext2.Provider>
+    )
 }

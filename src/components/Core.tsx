@@ -1,21 +1,24 @@
-import useTodos from '../hooks/useTodos2'
 
-type Props = {}
+import useTodosStore from '../todos/store'
 
-const Core = (props: Props) => {
+
+
+const Core = () => {
     //utilizamos el useContext y destructuramos en las constantes para que puedan ser utilizadas en el componente
     //const {todos,dispatch}=useContext(TodosContext2)
     //para simpplificar mas se utiliza un customHook
-    const {todos,dispatch} = useTodos()
+    //const {todos,dispatch} = useTodos()
+    const {todos,add,destroy}=useTodosStore()
+    
   return (
     <>
         <h1>Hola mundo</h1>
-        <button onClick={()=>dispatch({type:'add',todo:{id:Math.random(),name:'clear my room'}})}>Add TODO</button>
+        <button onClick={()=> add({id:Math.random(),name:'clear my room'})}>Add TODO</button>
 
         <ul>
             {todos.map((todo)=>
                 (
-                <li key={todo.id}>{todo.name} <button onClick={()=>dispatch({type:'delete',todoId:todo.id})}>Delete Todo</button></li>
+                <li key={todo.id}>{todo.name} <button onClick={()=>destroy(todo.id)}>Delete Todo</button></li>
                 )
                 )}
         </ul>
